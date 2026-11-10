@@ -3,6 +3,8 @@
 pytest + requests + YAML 数据驱动 + JSON Schema + Allure / HTML 报告。
 练习接口：[JSONPlaceholder](https://jsonplaceholder.typicode.com)（免费，无需注册）。
 
+> 📘 **第一次使用 / 在家里电脑从零开始**：看 [docs/家里电脑学习指南.md](docs/家里电脑学习指南.md)，包含安装步骤、在哪执行命令、按周学习计划和视频资料。
+
 ## 目录结构
 
 ```
