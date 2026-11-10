@@ -1,0 +1,26 @@
+# 数据驱动：用例逻辑写一次，数据放 YAML，加一行数据就多一条用例
+# 每条数据的 name 会显示在测试报告里
+
+get_post:
+  - name: 查询存在的帖子-1
+    post_id: 1
+    expected_status: 200
+    expected: {id: 1, userId: 1}
+  - name: 查询存在的帖子-100
+    post_id: 100
+    expected_status: 200
+    expected: {id: 100, userId: 10}
+  - name: 查询不存在的帖子
+    post_id: 99999
+    expected_status: 404
+    expected: {}
+
+create_post:
+  - name: 普通英文标题
+    title: hello pytest
+    body: my first api test
+    user_id: 1
+  - name: 中文标题
+    title: 接口自动化练习
+    body: 支持中文内容
+    user_id: 2

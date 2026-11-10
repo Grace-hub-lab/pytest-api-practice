@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 虚拟环境
+.venv/
+venv/
+
+# 报告（每次运行生成，不提交）
+reports/
+allure-results/
+allure-report/
+
+# 编辑器
+.vscode/
+.idea/
+
+# 本地私密配置（token 等，绝不提交）
+config/local.yaml
+.env
