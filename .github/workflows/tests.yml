@@ -1,0 +1,47 @@
+# GitHub Actions 持续集成：每次 push 到 main（或手动点 Run workflow）自动跑接口 + Web UI 用例。
+# 结果在仓库页面的 Actions 标签页查看；报告在每次运行页面底部的 Artifacts 里下载。
+# Android 用例需要真机，CI 云服务器上没有设备，所以这里不跑。
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:        # 允许在 Actions 页面手动触发
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v5
+
+      - name: 安装 Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+
+      - name: 安装 Playwright 浏览器
+        run: python -m playwright install --with-deps chromium
+
+      - name: 运行用例（接口 + Web UI）
+        run: >
+          pytest -o log_cli=false
+          --html=reports/report.html --self-contained-html
+          --alluredir=allure-results
+
+      - name: 上传测试报告
+        if: always()        # 用例失败也要上传，方便排查
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-reports
+          path: |
+            reports/
+            allure-results/
+          retention-days: 14

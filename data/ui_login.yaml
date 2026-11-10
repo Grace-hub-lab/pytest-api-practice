@@ -1,0 +1,18 @@
+# 登录失败场景（数据驱动）：error 是页面上应该出现的错误提示（包含即可）
+login_fail:
+  - name: 账号被锁定
+    username: locked_out_user
+    password: secret_sauce
+    error: Sorry, this user has been locked out.
+  - name: 密码错误
+    username: standard_user
+    password: wrong_password
+    error: Username and password do not match
+  - name: 用户名为空
+    username: ""
+    password: secret_sauce
+    error: Username is required
+  - name: 密码为空
+    username: standard_user
+    password: ""
+    error: Password is required

@@ -1,11 +1,19 @@
-# 多环境配置：运行时用 --env 切换，例如 pytest --env=test
+# 多环境配置：运行时用 --env 切换，例如 pytest --env=dev
 # 真实项目里 dev / test / prod 通常是不同的服务器地址
 default_env: test
 
 envs:
   test:
-    base_url: https://jsonplaceholder.typicode.com
+    base_url: https://jsonplaceholder.typicode.com   # 接口测试地址
+    ui_base_url: https://www.saucedemo.com           # Web UI 测试地址
     timeout: 15
   dev:
     base_url: https://jsonplaceholder.typicode.com
+    ui_base_url: https://www.saucedemo.com
     timeout: 30
+
+# Web UI 测试账号（saucedemo 公开的演示账号，不是私密信息）
+ui_accounts:
+  standard:
+    username: standard_user
+    password: secret_sauce

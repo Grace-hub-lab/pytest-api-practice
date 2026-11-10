@@ -12,6 +12,12 @@ reports/
 allure-results/
 allure-report/
 
+# 练习课运行时生成的临时文件、Playwright 输出、安装日志
+playground/_tmp/
+test-results/
+pip_install.log
+pw_install.log
+
 # 编辑器
 .vscode/
 .idea/

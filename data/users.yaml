@@ -1,0 +1,7 @@
+get_user:
+  - name: 用户1-Bret
+    user_id: 1
+    expected: {id: 1, username: Bret}
+  - name: 用户10-Moriah
+    user_id: 10
+    expected: {id: 10, username: Moriah.Stanton}
